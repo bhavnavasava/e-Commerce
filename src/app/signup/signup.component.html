@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="row w-100 m-0">
+                <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+                    <div class="card col-lg-4 mx-auto">
+                        <div class="card-body px-5 py-5">
+                            <h3 class="card-title text-left mb-3">Signup Here!!</h3>
+                            <form [formGroup]="userForm" (ngSubmit)="signup()">
+                                <div class="form-group">
+                                    <label>FirstName</label>
+                                    <input type="text" class="form-control p_input" formControlName="firstName">
+                                </div>
+                                <span class="err"
+                                    *ngIf="userForm.get('firstName')?.touched && userForm.get('firstName')?.hasError('required')">please
+                                    enter name</span>
+                                <span class="err"
+                                    *ngIf="userForm.get('firstName')?.touched  && userForm.get('firstName')?.hasError('minlength')">FirstName
+                                    Should be in 3 length </span>
+
+                                <div class="form-group">
+                                    <label>LastName</label>
+                                    <input type="text" class="form-control p_input" formControlName="lastName">
+                                </div>
+                                <span class="err"
+                                    *ngIf="userForm.get('lastName')?.touched && userForm.get('lastName')?.hasError('required')">please
+                                    enter name</span>
+                                <span class="err"
+                                    *ngIf="userForm.get('lastName')?.touched  && userForm.get('lastName')?.hasError('minlength')">FirstName
+                                    Should be in 3 length </span>
+
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control p_input" formControlName="email">
+                                </div>
+                                <span class="err"
+                                    *ngIf="userForm.get('email')?.touched && !userForm.get('email')?.valid">Please Enter
+                                    Email</span>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control p_input" formControlName="password">
+                                </div>
+                                <span class="err"
+                                    *ngIf="userForm.get('password')?.touched && userForm.get('password')?.hasError('required')">
+                                    Please Enter Password
+                                </span><span class="err"
+                                    *ngIf="userForm.get('password')?.touched && userForm.get('password')?.hasError('minlength')">
+                                    Password Must be in 8 length</span>
+
+                                <span class="err"
+                                    *ngIf="userForm.get('password')?.touched && userForm.get('password')?.hasError('strongPassword')">
+                                    Please Select Strong Password [include <br> 1) [ @ or $ or # ] <br>2) Upper Letter
+                                    <br>3) Lower Letter ]
+                                </span>
+                                
+                                <div class="form-group d-flex align-items-center justify-content-between">
+                                    <label>Gender</label>
+                                    <input type="radio" value="male" formControlName="gender"> Male<br>
+                                    <input type="radio" value="female" formControlName="gender"> Female<br>
+
+
+                                </div>
+
+                                <div class="form-group d-flex align-items-center justify-content-between">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input"> Remember me </label>
+                                    </div>
+                                    <a href="#" class="forgot-pass">Forgot password</a>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
+                                </div>
+
+                                <p class="sign-up text-center">Already have an Account?<a routerLink="/login"> Login</a></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
