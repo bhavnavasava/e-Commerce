@@ -40,7 +40,9 @@
                     <label class="form-check-label">
                       <input type="checkbox" class="form-check-input"> Remember me </label>
                   </div>
-                  <a routerLink="/forgetPassword" class="forgot-pass">Forgot password</a>
+                  <a (click)="showDialog()"  class="forgot-pass">Forgot password</a>
+                  <!-- <a  class="forgot-pass" showDialog()>Forgot password</a> -->
+                  
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
@@ -59,5 +61,28 @@
       </div>
     </div>
   </div>
+
+<div class="container-scroller">
+
+  <p-dialog header="Send otp to Email" [style]="{width: '40vw'}" [(visible)]="display">
+    <div class="dialogform">
+    <form [formGroup]="otpsend" (ngSubmit)="otpsend1()">
+      <label for="email">Email: </label>
+      <div class="row">
+          <div class="col-md-10">
+            <input type="email" formControlName="email" class="form-control" required />
+              <span class="err" *ngIf="loginForm.get('email')?.hasError('pattern')">
+                  Please Enter valid email
+              </span>
+          </div>
+          <div class="col-md-2">
+              <button type="submit" class="btn btn-primary" style="width: 100%;">send</button>
+          </div>
+      </div>
+  </form>
+  </div>
+  </p-dialog>
+  </div>
+  
 </body>
 </html>

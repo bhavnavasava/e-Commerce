@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from '../category.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-category',
@@ -12,10 +13,10 @@ import { CategoryService } from '../category.service';
 export class CategoryComponent implements OnInit {
 
   userForm:FormGroup
-
+  userss: any = {}
   categories: Array<any> = []
   display = false
-  constructor(private categoryService:CategoryService,private toastr:ToastrService,private router:Router) {
+  constructor(private categoryService:CategoryService,private toastr:ToastrService,private router:Router,private userService:UserService) {
     this.userForm = new FormGroup({
       categoryName: new FormControl('', [Validators.required]),
 
@@ -24,6 +25,11 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories()
+
+    const user = localStorage.getItem("userId");
+    this.userService.getUserById(user).subscribe(resp => {
+      this.userss = resp.data
+    })
    
   }
   getCategories() {

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
-
+import{DialogModule}from "primeng/dialog"
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
@@ -19,7 +19,10 @@ import { UsersComponent } from './users/users.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+
+import { AllCategoriesComponent } from './all-categories/all-categories.component';
+import { ForgotpasswordComponent } from './forget-password/forget-password.component';
+import { AllSubCategoriesComponent } from './all-sub-categories/all-sub-categories.component';
 
 
 
@@ -36,17 +39,20 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     AddCategoryComponent,
     AddProductComponent,
     SubCategoryComponent,
-    ForgetPasswordComponent
+    ForgotpasswordComponent,
+    AllCategoriesComponent,
+    AllSubCategoriesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
     FormsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     ReactiveFormsModule,
-    
+    DialogModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

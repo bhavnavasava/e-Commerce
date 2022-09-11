@@ -28,4 +28,8 @@ export class CategoryService {
     console.log("add subcategory  api");
     return this.http.post(environment.url+ "private_api/addsubcategory",subCategory)
   }
+  getAllSubCategories(): Observable<any> { 
+    console.log("all category  api");
+    return this.http.get(environment.url+ "private_api/getallsubcategories")
+  }
 }

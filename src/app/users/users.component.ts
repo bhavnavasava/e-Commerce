@@ -22,8 +22,8 @@ export class UsersComponent implements OnInit {
 
     const user = localStorage.getItem("userId");
     this.userService.getUserById(user).subscribe(resp => {
-      this.users = resp.data
-      console.log("user by id" + resp.data.user);
+      this.users = resp
+      console.log("user by id" + resp.user);
 
     })
   }

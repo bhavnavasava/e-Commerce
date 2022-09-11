@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SessionService } from '../session.service';
+import {DialogModule} from 'primeng/dialog';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,18 @@ import { SessionService } from '../session.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup
-  constructor(private tsService: ToastrService, private router: Router, private sessionService: SessionService, private toastr: ToastrService) {
+  otpsend: FormGroup;
+  display: boolean = false;
+  constructor( private router: Router, private sessionService: SessionService, private toastr: ToastrService) {
     console.log("constructore")
     this.loginForm = new FormGroup({
 
       email: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required, Validators.minLength(8), this.strongPassword]),
 
+    })
+    this.otpsend = new FormGroup({
+      email: new FormControl('', [Validators.required]),
     })
   }
 
@@ -74,7 +80,28 @@ export class LoginComponent implements OnInit {
       return null
     else
       return { "strongPassword": true }
-    // return null;//no errors 
+  
   }
+
+  otpsend1(){
+    console.log(this.otpsend.value);
+    if(this.otpsend.valid){
+      this.sessionService.emailsend(this.otpsend.value).subscribe(res => {
+        this.toastr.success("otp send successfully")
+        localStorage.setItem("email",this.otpsend.value.email)
+        this.router.navigateByUrl("/forgotpassword")
+      }, err => {
+        this.toastr.error("something went wrong")
+        console.log(err);
+      })
+    } else {
+      this.toastr.error("please check email")
+    }
+  }
+  showDialog() {
+    this.display = true;
+  
+  }
+
 
 }

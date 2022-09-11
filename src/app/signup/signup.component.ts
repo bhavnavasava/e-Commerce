@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
       this.sessionService.signupApi(this.userForm.value).subscribe(res => {
         if (res) {
           console.log("second if")
-          this.tsService.success("signup done", "", { timeOut: 30000 });
+          this.tsService.success("signup done","");
           this.router.navigateByUrl("/login");
         }
       }, err => {

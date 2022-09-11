@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   users: Array<any> = []
 
-  user: any = {}
+  userss: any = {}
   userid: number = 0;
 
   display = false
@@ -26,9 +26,7 @@ export class HomeComponent implements OnInit {
 
     const user = localStorage.getItem("userId");
     this.userService.getUserById(user).subscribe(resp => {
-      this.users = resp.data
-      console.log("user by id" + resp.data.user);
-
+      this.userss = resp.data
     })
   }
 

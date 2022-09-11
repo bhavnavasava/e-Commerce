@@ -28,7 +28,7 @@
                                     <span class="count bg-success"></span>
                                 </div>
                                 <div class="profile-name">
-                                    <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
+                                    <h5 class="mb-0 font-weight-normal">{{userss.firstName}}  {{userss.lastName}}</h5>
                                     <span>Gold Member</span>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Add New Category</h4>
 
-                                    <form class="forms-sample" [formGroup]="userForm" (ngSubmit)="addCategory()">
+                                    <form class="forms-sample" [formGroup]="categoryForm" (ngSubmit)="addCategory()">
                                         <div class="form-group">
                                             <label for="exampleInputUsername1">Category</label>
                                             <input type="text" class="form-control " id="exampleInputUsername1"
@@ -115,17 +115,7 @@
                 </div>
                 <!-- main-panel ends -->
             </div>
-            <!-- page-body-wrapper ends -->
+            
         </div>
-        <!-- container-scroller -->
-        <!-- plugins:js -->
-
-
-
-
-
-
-
-
         <div class="jvectormap-tip"></div>
     </body>
